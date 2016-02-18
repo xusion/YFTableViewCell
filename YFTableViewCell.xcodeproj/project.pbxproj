@@ -12,7 +12,9 @@
 		04B722231BE8F2A2009C5015 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04B722221BE8F2A2009C5015 /* ViewController.m */; };
 		04B722261BE8F2A2009C5015 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 04B722241BE8F2A2009C5015 /* Main.storyboard */; };
 		04B722281BE8F2A2009C5015 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 04B722271BE8F2A2009C5015 /* Assets.xcassets */; };
-		04B7222B1BE8F2A2009C5015 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 04B722291BE8F2A2009C5015 /* LaunchScreen.storyboard */; };
+		04ED4ED61C1984D2003E2C64 /* YFTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 04ED4ED51C1984D2003E2C64 /* YFTableViewCell.m */; };
+		04ED4EDD1C19858E003E2C64 /* TableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 04ED4EDB1C19858E003E2C64 /* TableViewCell.m */; };
+		04ED4EDE1C19858E003E2C64 /* TableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04ED4EDC1C19858E003E2C64 /* TableViewCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,8 +26,12 @@
 		04B722221BE8F2A2009C5015 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		04B722251BE8F2A2009C5015 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		04B722271BE8F2A2009C5015 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		04B7222A1BE8F2A2009C5015 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		04B7222C1BE8F2A2009C5015 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		04ED4ED41C1984D2003E2C64 /* YFTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YFTableViewCell.h; sourceTree = "<group>"; };
+		04ED4ED51C1984D2003E2C64 /* YFTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YFTableViewCell.m; sourceTree = "<group>"; };
+		04ED4EDA1C19858E003E2C64 /* TableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TableViewCell.h; sourceTree = "<group>"; };
+		04ED4EDB1C19858E003E2C64 /* TableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TableViewCell.m; sourceTree = "<group>"; };
+		04ED4EDC1C19858E003E2C64 /* TableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TableViewCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,14 +64,14 @@
 		04B7221A1BE8F2A2009C5015 /* YFTableViewCell */ = {
 			isa = PBXGroup;
 			children = (
+				04ED4ED31C1984D2003E2C64 /* YFTableViewCell */,
 				04B7221E1BE8F2A2009C5015 /* AppDelegate.h */,
 				04B7221F1BE8F2A2009C5015 /* AppDelegate.m */,
 				04B722211BE8F2A2009C5015 /* ViewController.h */,
 				04B722221BE8F2A2009C5015 /* ViewController.m */,
-				04B722241BE8F2A2009C5015 /* Main.storyboard */,
-				04B722271BE8F2A2009C5015 /* Assets.xcassets */,
-				04B722291BE8F2A2009C5015 /* LaunchScreen.storyboard */,
-				04B7222C1BE8F2A2009C5015 /* Info.plist */,
+				04ED4EDA1C19858E003E2C64 /* TableViewCell.h */,
+				04ED4EDB1C19858E003E2C64 /* TableViewCell.m */,
+				04ED4EDC1C19858E003E2C64 /* TableViewCell.xib */,
 				04B7221B1BE8F2A2009C5015 /* Supporting Files */,
 			);
 			path = YFTableViewCell;
@@ -74,9 +80,21 @@
 		04B7221B1BE8F2A2009C5015 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				04B722241BE8F2A2009C5015 /* Main.storyboard */,
+				04B722271BE8F2A2009C5015 /* Assets.xcassets */,
+				04B7222C1BE8F2A2009C5015 /* Info.plist */,
 				04B7221C1BE8F2A2009C5015 /* main.m */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		04ED4ED31C1984D2003E2C64 /* YFTableViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				04ED4ED41C1984D2003E2C64 /* YFTableViewCell.h */,
+				04ED4ED51C1984D2003E2C64 /* YFTableViewCell.m */,
+			);
+			path = YFTableViewCell;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -136,8 +154,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				04B7222B1BE8F2A2009C5015 /* LaunchScreen.storyboard in Resources */,
 				04B722281BE8F2A2009C5015 /* Assets.xcassets in Resources */,
+				04ED4EDE1C19858E003E2C64 /* TableViewCell.xib in Resources */,
 				04B722261BE8F2A2009C5015 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -151,6 +169,8 @@
 			files = (
 				04B722231BE8F2A2009C5015 /* ViewController.m in Sources */,
 				04B722201BE8F2A2009C5015 /* AppDelegate.m in Sources */,
+				04ED4ED61C1984D2003E2C64 /* YFTableViewCell.m in Sources */,
+				04ED4EDD1C19858E003E2C64 /* TableViewCell.m in Sources */,
 				04B7221D1BE8F2A2009C5015 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -164,14 +184,6 @@
 				04B722251BE8F2A2009C5015 /* Base */,
 			);
 			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-		04B722291BE8F2A2009C5015 /* LaunchScreen.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				04B7222A1BE8F2A2009C5015 /* Base */,
-			);
-			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -264,8 +276,9 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = YFTableViewCell/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = Saxue.YFTableViewCell;
+				PRODUCT_BUNDLE_IDENTIFIER = Dandre.YFTableViewCell;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -275,8 +288,9 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = YFTableViewCell/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = Saxue.YFTableViewCell;
+				PRODUCT_BUNDLE_IDENTIFIER = Dandre.YFTableViewCell;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
@@ -300,6 +314,7 @@
 				04B722311BE8F2A2009C5015 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

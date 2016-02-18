@@ -7,8 +7,9 @@
 //
 
 #import "ViewController.h"
+#import "TableViewCell.h"
 
-@interface ViewController ()
+@interface ViewController ()<YFTableViewDelegate>
 
 @end
 
@@ -16,12 +17,60 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view, typically from a nib.
+    self.title = @"YFTableViewController";
+    self.tableView.delegate = self;
+    self.tableView.dataSource = self;
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+#pragma mark - UITableViewDataSource
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    return 80;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    static NSString *CellID = @"tableviewcell";
+    TableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellID];
+    if (!cell) {
+        cell = [[[NSBundle mainBundle] loadNibNamed:@"TableViewCell" owner:self options:nil] lastObject];
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
+        cell.delegate = self;
+        
+        NSMutableArray *array = [[NSMutableArray alloc] init];
+        [array addObject:[UIButton buttonWithTitle:@"置顶"
+                                        titleColor:nil
+                                   backgroundColor:kYFCellEditButtonMore]];
+        [array addObject:[UIButton buttonWithTitle:@"标为未读"
+                                        titleColor:nil
+                                   backgroundColor:kYFCellEditButtonIsRead]];
+        [array addObject:[UIButton buttonWithTitle:@"删除"
+                                        titleColor:nil
+                                   backgroundColor:kYFCellEditButtonDelele]];
+        cell.editButtonArray = array;
+    }
+    
+    return cell;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return 80;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    NSLog(@"indexPath:%@",indexPath);
+}
+
+- (void)tableView:(UITableView *)tableView didClickedEditButtonAtButtonIndex:(NSInteger)buttonIndex atIndexPath:(NSIndexPath *)indexPath
+{
+    NSLog(@"buttonIndex:%ld",buttonIndex);
 }
 
 @end
