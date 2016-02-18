@@ -12,5 +12,5 @@
   4.实现两个代理方法<br />
     - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath<br />
     - (void)tableView:(UITableView *)tableView didClickedEditButtonAtButtonIndex:(NSInteger)buttonIndex atIndexPath:(NSIndexPath *)indexPath<br />
-    注：第二个代理方法里的操作相见Demo<br />
+    注：第二个代理方法里的操作详见Demo<br />
         下一版本将支持swift<br />
