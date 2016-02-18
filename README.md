@@ -11,7 +11,7 @@
   2.设置cell.delegate = self;
   3.设置cell.editButtonArray = array;(array为存有 __kindof UIButton 的数组)
   4.实现两个代理方法
-      - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
-      - (void)tableView:(UITableView *)tableView didClickedEditButtonAtButtonIndex:(NSInteger)buttonIndex atIndexPath:(NSIndexPath *)indexPath
-  注：第二个代理方法里的操作相见Demo
-     下一版本将支持swift
+    - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+    - (void)tableView:(UITableView *)tableView didClickedEditButtonAtButtonIndex:(NSInteger)buttonIndex atIndexPath:(NSIndexPath *)indexPath
+    注：第二个代理方法里的操作相见Demo
+        下一版本将支持swift
