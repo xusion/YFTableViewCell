@@ -1,4 +1,4 @@
-# YFTableViewCell
+# YFTableViewCell - version 1.0
 支持Cell滑动删除
 
 #优点：
