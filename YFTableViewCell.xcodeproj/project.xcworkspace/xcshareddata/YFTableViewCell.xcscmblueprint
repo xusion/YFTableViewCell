@@ -1,15 +1,18 @@
 {
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "A125FC95EDFA0A663C60B6ADE00A389FF37C66F5",
   "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
     "0b1afbb2-79f2-446d-b908-f740b9f8ae2c" : {
 
     }
   },
   "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
-    "0b1afbb2-79f2-446d-b908-f740b9f8ae2c" : 0
+    "0b1afbb2-79f2-446d-b908-f740b9f8ae2c" : 0,
+    "A125FC95EDFA0A663C60B6ADE00A389FF37C66F5" : 0
   },
   "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "546FAC77-A93E-46CE-A573-78B5F50D1B26",
   "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
-    "0b1afbb2-79f2-446d-b908-f740b9f8ae2c" : ""
+    "0b1afbb2-79f2-446d-b908-f740b9f8ae2c" : "",
+    "A125FC95EDFA0A663C60B6ADE00A389FF37C66F5" : "YFTableViewCell\/"
   },
   "DVTSourceControlWorkspaceBlueprintNameKey" : "YFTableViewCell",
   "DVTSourceControlWorkspaceBlueprintVersion" : 204,
@@ -19,6 +22,11 @@
       "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "svn:\/\/saxue.local\/findfairs",
       "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Subversion",
       "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "0b1afbb2-79f2-446d-b908-f740b9f8ae2c"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "github.com:saxueyang\/YFTableViewCell.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "A125FC95EDFA0A663C60B6ADE00A389FF37C66F5"
     }
   ]
 }
