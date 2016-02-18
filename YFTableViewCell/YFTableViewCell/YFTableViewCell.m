@@ -255,6 +255,5 @@ typedef NS_ENUM(NSInteger, YFTableViewCellState) {
     return btn;
 }
 
-
 @end
 
