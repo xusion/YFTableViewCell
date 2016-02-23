@@ -4,6 +4,9 @@
 #优点：
   1.支持代码和.xib等方式自定义tableViewCell<br />
   2.使用简单，继承于YFTableViewCell即可<br />
+  
+#演示
+<img src="https://github.com/saxueyang/YFTableViewCell/blob/master/YFTableViewCell/YFTableViewCell.gif" />
 
 #使用步骤：
   1.将你的tableViewCell继承于YFTableViewCell<br />
