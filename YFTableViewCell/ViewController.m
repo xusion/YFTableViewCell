@@ -10,7 +10,9 @@
 #import "TableViewCell.h"
 
 @interface ViewController ()<YFTableViewDelegate>
-
+{
+    NSMutableArray      *_dataArray;
+}
 @end
 
 @implementation ViewController
@@ -20,6 +22,12 @@
     self.title = @"YFTableViewController";
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
+    if (!_dataArray) {
+        _dataArray = [[NSMutableArray alloc] init];
+        for (NSInteger i=0; i<30; i++) {
+            [_dataArray addObject:[NSString stringWithFormat:@"测试数据 %ld",i]];
+        }
+    }
 }
 
 - (void)didReceiveMemoryWarning {
@@ -30,7 +38,7 @@
 #pragma mark - UITableViewDataSource
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 80;
+    return _dataArray.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -52,7 +60,15 @@
         [array addObject:[UIButton buttonWithTitle:@"删除"
                                         titleColor:nil
                                    backgroundColor:kYFCellEditButtonDelele]];
+//        [array addObject:[UIButton buttonWithImage:[UIImage imageNamed:@"icon_delete"]
+//                                             title:nil
+//                                        titleColor:nil
+//                                   backgroundColor:kYFCellEditButtonDelele]];
         cell.editButtonArray = array;
+    }
+    
+    if (_dataArray.count) {
+        cell.titleLabel.text = _dataArray[indexPath.row];
     }
     
     return cell;
@@ -71,6 +87,18 @@
 - (void)tableView:(UITableView *)tableView didClickedEditButtonAtButtonIndex:(NSInteger)buttonIndex atIndexPath:(NSIndexPath *)indexPath
 {
     NSLog(@"buttonIndex:%ld",buttonIndex);
+    
+    /**
+     *  响应点击事件 buttonIndex从左至右依次是 0，1，2，...
+     */
+    if (buttonIndex == 2) {     // 点击删除按钮
+        if (_dataArray.count>0) {
+            [_dataArray removeObjectAtIndex:indexPath.row];
+            [tableView beginUpdates];
+            [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationLeft];
+            [tableView endUpdates];
+        }
+    }
 }
 
 @end
