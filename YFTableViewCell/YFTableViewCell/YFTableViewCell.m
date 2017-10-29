@@ -59,7 +59,7 @@ typedef NS_ENUM(NSInteger, YFTableViewCellState) {
         [self.scrollView addSubview:_backgroundView];
         
         [[NSNotificationCenter defaultCenter] addObserver:self
-                                                 selector:@selector(YFTableViewCellNotification:)
+                                                 selector:@selector(dealNotification:)
                                                      name:YFTableViewCellNSNotification
                                                    object:nil];
     }
@@ -99,7 +99,7 @@ typedef NS_ENUM(NSInteger, YFTableViewCellState) {
 }
 
 #pragma mark -
-- (void)YFTableViewCellNotification:(NSNotification *)info
+- (void)dealNotification:(NSNotification *)info
 {
     id obj = info.object;
     if (obj!=self) {

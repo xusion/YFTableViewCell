@@ -60,10 +60,10 @@
         [array addObject:[UIButton buttonWithTitle:@"删除"
                                         titleColor:nil
                                    backgroundColor:kYFCellEditButtonDelele]];
-//        [array addObject:[UIButton buttonWithImage:[UIImage imageNamed:@"icon_delete"]
-//                                             title:nil
-//                                        titleColor:nil
-//                                   backgroundColor:kYFCellEditButtonDelele]];
+        [array addObject:[UIButton buttonWithImage:[UIImage imageNamed:@"icon_delete"]
+                                             title:nil
+                                        titleColor:nil
+                                   backgroundColor:kYFCellEditButtonDelele]];
         cell.editButtonArray = array;
     }
     
