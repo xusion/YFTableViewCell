@@ -123,11 +123,8 @@ typedef NS_ENUM(NSInteger, YFTableViewCellState) {
     }
     
     if (self.delegate) {
-        
-        UITableView *tableview = (UITableView *)[[self superview] superview];
-        
         if ([self.delegate respondsToSelector:@selector(tableView:didSelectRowAtIndexPath:)]) {
-            [self.delegate tableView:tableview didSelectRowAtIndexPath:[tableview indexPathForCell:self]];
+            [self.delegate tableView:self.tableView didSelectRowAtIndexPath:self.indexPath];
         }else{
             NSLog(@"代理未实现-(void)tableView:didSelectRowAtIndexPath:");
         }
@@ -143,12 +140,11 @@ typedef NS_ENUM(NSInteger, YFTableViewCellState) {
     }];
     
     if (self.delegate) {
-        UITableView *tableview = (UITableView *)[[self superview] superview];
         
         if ([self.delegate respondsToSelector:@selector(tableView:didClickedEditButtonAtButtonIndex:atIndexPath:)]) {
-            [self.delegate tableView:tableview
+            [self.delegate tableView:self.tableView
    didClickedEditButtonAtButtonIndex:sender.tag - 10000
-                         atIndexPath:[tableview indexPathForCell:self]];
+                         atIndexPath:self.indexPath];
         }else{
             NSLog(@"代理未实现-(void)tableView:didSelectRowAtIndexPath:");
         }
@@ -183,15 +179,13 @@ typedef NS_ENUM(NSInteger, YFTableViewCellState) {
 
 - (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView
 {
+     CGRect rect = _rightButtonsView.frame;
     if (_rightButtonsView.frame.origin.x >= CGRectGetWidth(self.bounds)) {
-        CGRect rect = _rightButtonsView.frame;
         rect.origin.x = CGRectGetWidth(self.bounds);
-        _rightButtonsView.frame = rect;
     }else{
-        CGRect rect = _rightButtonsView.frame;
         rect.origin.x = CGRectGetWidth(self.bounds) - rect.size.width;
-        _rightButtonsView.frame = rect;
     }
+    _rightButtonsView.frame = rect;
 }
 
 - (void)scrollViewWillEndDragging:(UIScrollView *)scrollView withVelocity:(CGPoint)velocity targetContentOffset:(inout CGPoint *)targetContentOffset

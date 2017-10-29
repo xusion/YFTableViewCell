@@ -18,6 +18,7 @@
 		04ED4EDE1C19858E003E2C64 /* TableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04ED4EDC1C19858E003E2C64 /* TableViewCell.xib */; };
 		AFACC0841C7CA4730057E5A9 /* icon_more.png in Resources */ = {isa = PBXBuildFile; fileRef = AFACC0821C7CA4730057E5A9 /* icon_more.png */; };
 		AFACC0851C7CA4730057E5A9 /* icon_delete.png in Resources */ = {isa = PBXBuildFile; fileRef = AFACC0831C7CA4730057E5A9 /* icon_delete.png */; };
+		AFF45C701FA6196300E54777 /* UITableViewCell+Helper.m in Sources */ = {isa = PBXBuildFile; fileRef = AFF45C6F1FA6196300E54777 /* UITableViewCell+Helper.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,6 +39,8 @@
 		04ED4EDC1C19858E003E2C64 /* TableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TableViewCell.xib; sourceTree = "<group>"; };
 		AFACC0821C7CA4730057E5A9 /* icon_more.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_more.png; sourceTree = "<group>"; };
 		AFACC0831C7CA4730057E5A9 /* icon_delete.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_delete.png; sourceTree = "<group>"; };
+		AFF45C6E1FA6196300E54777 /* UITableViewCell+Helper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UITableViewCell+Helper.h"; sourceTree = "<group>"; };
+		AFF45C6F1FA6196300E54777 /* UITableViewCell+Helper.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UITableViewCell+Helper.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -100,6 +103,8 @@
 		04ED4ED31C1984D2003E2C64 /* YFTableViewCell */ = {
 			isa = PBXGroup;
 			children = (
+				AFF45C6E1FA6196300E54777 /* UITableViewCell+Helper.h */,
+				AFF45C6F1FA6196300E54777 /* UITableViewCell+Helper.m */,
 				04ED4ED41C1984D2003E2C64 /* YFTableViewCell.h */,
 				04ED4ED51C1984D2003E2C64 /* YFTableViewCell.m */,
 			);
@@ -182,6 +187,7 @@
 				04B722231BE8F2A2009C5015 /* ViewController.m in Sources */,
 				04B722201BE8F2A2009C5015 /* AppDelegate.m in Sources */,
 				04ED4ED61C1984D2003E2C64 /* YFTableViewCell.m in Sources */,
+				AFF45C701FA6196300E54777 /* UITableViewCell+Helper.m in Sources */,
 				04ED4EDD1C19858E003E2C64 /* TableViewCell.m in Sources */,
 				04B7221D1BE8F2A2009C5015 /* main.m in Sources */,
 			);

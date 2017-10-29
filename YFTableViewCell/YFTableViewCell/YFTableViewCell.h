@@ -26,6 +26,7 @@
  */
 
 #import <UIKit/UIKit.h>
+#import "UITableViewCell+Helper.h"
 
 extern NSString *const YFTableViewCellNSNotification;
 
