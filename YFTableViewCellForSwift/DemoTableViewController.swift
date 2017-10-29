@@ -8,6 +8,8 @@
 
 import UIKit
 
+
+/// 示例代码
 class DemoTableViewController: UITableViewController, YFTableViewCellDelegate {
     
     
@@ -46,6 +48,7 @@ class DemoTableViewController: UITableViewController, YFTableViewCellDelegate {
         return cell
     }
     
+    // MARK: YFTableViewDelegate
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         print("点击了cell -- \(indexPath.row)")
     }
