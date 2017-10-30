@@ -10,7 +10,7 @@
   
 ## 演示
 
-![演示动画 演示动画](https://github.com/saxueyang/YFTableViewCell/blob/master/YFTableViewCell/YFTableViewCell.gif)
+![演示动画 演示动画](https://github.com/dandreyang/YFTableViewCell/blob/master/YFTableViewCell/YFTableViewCell.gif)
 
 ## 使用步骤：
 - 1.将你的tableViewCell继承于YFTableViewCell
