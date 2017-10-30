@@ -1,5 +1,5 @@
 # YFTableViewCell for Objective-C And Swift - version 1.1
-方便快捷地实现类似QQ的自定义侧滑删除效果，同时支持OC和Swift，集成简单快速，同时支持code和IB。
+> 方便快捷地实现类似QQ的自定义侧滑删除效果，同时支持OC和Swift，集成简单快速，同时支持code和IB。
 
 ## 优点：
 - 1.按钮支持文字、图标、文字+图标
@@ -18,12 +18,11 @@
 - 3.设置cell.editButtonArray = array;(array为存有 __kindof UIButton 的数组)
 - 4.实现两个代理方法
     - OC
-        -- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath<br />
-        -- (void)tableView:(UITableView *)tableView didClickedEditButtonAtButtonIndex:(NSInteger)buttonIndex atIndexPath:(NSIndexPath *)indexPath
+        `- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath`
+        `- (void)tableView:(UITableView *)tableView didClickedEditButtonAtButtonIndex:(NSInteger)buttonIndex atIndexPath:(NSIndexPath *)indexPath`
     - Swift
-
-        func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath)
-        func tableView(_ tableView: UITableView, didClickedEditButtonAt buttonIndex: Int, At IndexPath:IndexPath)
+        `func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath)`
+        `func tableView(_ tableView: UITableView, didClickedEditButtonAt buttonIndex: Int, At IndexPath:IndexPath)`
 
 ##  version 1.1 更新内容
 
