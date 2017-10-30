@@ -21,7 +21,7 @@
         `- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath`<br />
         `- (void)tableView:(UITableView *)tableView didClickedEditButtonAtButtonIndex:(NSInteger)buttonIndex atIndexPath:(NSIndexPath *)indexPath`
     - Swift<br />
-        `func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath)`<br />
+        `func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath)`<br >
         `func tableView(_ tableView: UITableView, didClickedEditButtonAt buttonIndex: Int, At IndexPath:IndexPath)`
 
 ##  version 1.1 更新内容

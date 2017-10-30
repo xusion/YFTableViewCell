@@ -9,7 +9,7 @@
 /**
  *  本人英文名 Saxue 已经更为 Dandre
  *  个人博客：http://yangfeng.pw
- *  YFTableViewCell下载：https://github.com/saxueyang/YFTableViewCell
+ *  YFTableViewCell下载：https://github.com/DandreYang/YFTableViewCell
  *  优点：
  *  1.支持代码和.xib等方式自定义tableViewCell
  *  2.使用简单，继承于YFTableViewCell即可
