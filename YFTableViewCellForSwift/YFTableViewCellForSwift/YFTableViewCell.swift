@@ -29,7 +29,6 @@ protocol YFTableViewCellDelegate:NSObjectProtocol {
     
     
     /// 当点击cell时触发此方法，与UITableView的以下代理方法相同
-    /// - func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath)
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath)
     
     /// 当点击cell上的自定义按钮时触发此协议方法

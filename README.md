@@ -10,17 +10,22 @@
   
 ## 演示
 
-<img src="https://github.com/saxueyang/YFTableViewCell/blob/master/YFTableViewCell/YFTableViewCell.gif" />
+![演示动画 演示动画](https://github.com/saxueyang/YFTableViewCell/blob/master/YFTableViewCell/YFTableViewCell.gif)
 
 ## 使用步骤：
 - 1.将你的tableViewCell继承于YFTableViewCell
 - 2.设置cell.delegate = self;
 - 3.设置cell.editButtonArray = array;(array为存有 __kindof UIButton 的数组)
 - 4.实现两个代理方法
-    - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath<br />
-    - (void)tableView:(UITableView *)tableView didClickedEditButtonAtButtonIndex:(NSInteger)buttonIndex atIndexPath:(NSIndexPath *)indexPath
+    - OC
+        -- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath<br />
+        -- (void)tableView:(UITableView *)tableView didClickedEditButtonAtButtonIndex:(NSInteger)buttonIndex atIndexPath:(NSIndexPath *)indexPath
+    - Swift
 
-## - version 1.1 更新内容
+        func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath)
+        func tableView(_ tableView: UITableView, didClickedEditButtonAt buttonIndex: Int, At IndexPath:IndexPath)
+
+##  version 1.1 更新内容
 
 - 1.重构部分方法，使其兼容iOS11
 - 2.支持Swift
