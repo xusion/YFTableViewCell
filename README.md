@@ -1,19 +1,26 @@
-# YFTableViewCell - version 1.0
-支持Cell滑动删除
+# YFTableViewCell for Objective-C And Swift - version 1.1
+方便快捷地实现类似QQ的自定义侧滑删除效果，同时支持OC和Swift，集成简单快速，同时支持code和IB。
 
-#优点：
-  1.支持代码和.xib等方式自定义tableViewCell<br />
-  2.使用简单，继承于YFTableViewCell即可<br />
+## 优点：
+- 1.按钮支持文字、图标、文字+图标
+- 2.支持任一自定义按钮（UIButton或其子类）
+- 3.集成简单，继承于YFTableViewCell即可
+- 4.同时支持code和IB创建cell
+- 5.同时支持OC和Swift
   
-#演示
+## 演示
+
 <img src="https://github.com/saxueyang/YFTableViewCell/blob/master/YFTableViewCell/YFTableViewCell.gif" />
 
-#使用步骤：
-  1.将你的tableViewCell继承于YFTableViewCell<br />
-  2.设置cell.delegate = self;<br />
-  3.设置cell.editButtonArray = array;(array为存有 __kindof UIButton 的数组)<br />
-  4.实现两个代理方法<br />
+## 使用步骤：
+- 1.将你的tableViewCell继承于YFTableViewCell
+- 2.设置cell.delegate = self;
+- 3.设置cell.editButtonArray = array;(array为存有 __kindof UIButton 的数组)
+- 4.实现两个代理方法
     - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath<br />
-    - (void)tableView:(UITableView *)tableView didClickedEditButtonAtButtonIndex:(NSInteger)buttonIndex atIndexPath:(NSIndexPath *)indexPath<br />
-    注：第二个代理方法里的操作详见Demo<br />
-        下一版本将支持swift<br />
+    - (void)tableView:(UITableView *)tableView didClickedEditButtonAtButtonIndex:(NSInteger)buttonIndex atIndexPath:(NSIndexPath *)indexPath
+
+## - version 1.1 更新内容
+
+- 1.重构部分方法，使其兼容iOS11
+- 2.支持Swift
