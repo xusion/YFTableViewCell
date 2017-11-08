@@ -18,11 +18,15 @@
 - 3.设置cell.editButtonArray = array;(array为存有 __kindof UIButton 的数组)
 - 4.实现两个代理方法
     - OC<br />
-        `- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath`<br />
-        `- (void)tableView:(UITableView *)tableView didClickedEditButtonAtButtonIndex:(NSInteger)buttonIndex atIndexPath:(NSIndexPath *)indexPath`
-    - Swift<br />
-        `func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath)`<br >
-        `func tableView(_ tableView: UITableView, didClickedEditButtonAt buttonIndex: Int, At IndexPath:IndexPath)`
+        ```objc
+        - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+        - (void)tableView:(UITableView *)tableView didClickedEditButtonAtButtonIndex:(NSInteger)buttonIndex atIndexPath:(NSIndexPath *)indexPath
+        ```
+    - Swift
+        ```swift
+        func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath)
+        func tableView(_ tableView: UITableView, didClickedEditButtonAt buttonIndex: Int, At IndexPath:IndexPath)
+        ```
 
 ##  version 1.1 更新内容
 
