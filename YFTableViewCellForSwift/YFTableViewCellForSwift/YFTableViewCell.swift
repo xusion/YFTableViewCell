@@ -144,7 +144,7 @@ class YFTableViewCell: UITableViewCell, UIScrollViewDelegate {
                                    width:self.contentView.frame.width,
                                    height:self.contentView.frame.height)
         
-        for var view in self.contentView.subviews {
+        for view in self.contentView.subviews {
             guard view.isKind(of: UIScrollView.self) && view.tag == 0x80000 else{
                 scrollView?.addSubview(view)
                 return
