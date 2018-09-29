@@ -44,6 +44,12 @@ class DemoTableViewController: UITableViewController, YFTableViewCellDelegate {
         cell.editButtonArray = [UIButton(title:"置顶", backgroundColor:kYFCellEditButtonMore),
                                 UIButton(title:"已读", backgroundColor:kYFCellEditButtonIsRead),
                                 UIButton(title:"删除")]
+        
+         // TODO: 新增代码 xusion
+        //开启【删除】按钮点击后提示【确认删除】按钮：cell.confirmButton = UIButton(title:"确认删除")
+        cell.confirmButton = UIButton(title:"确认删除", backgroundColor:kYFCellEditButtonDelele)
+        //设置点击哪个按钮才会提示【确认删除】按钮：cell.confirmButtonIndex = 0 (index为上面editButtonArray索引值)
+        cell.confirmButtonIndex = 2
 
         return cell
     }

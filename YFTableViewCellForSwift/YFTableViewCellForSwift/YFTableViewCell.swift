@@ -17,6 +17,8 @@
  *  1.将你的tableViewCell继承于YFTableViewCell
  *  2.设置cell.delegate = self;
  *  3.设置cell.editButtonArray = array;(array为存有 UIButton 对象 的数组)
+ *  3.1.开启【删除】按钮点击后提示【确认删除】按钮：cell.confirmButton = UIButton(title:"确认删除")
+ *  3.2.设置点击哪个按钮才会提示【确认删除】按钮：cell.confirmButtonIndex = 0 (index为上面editButtonArray索引值)
  *  4.实现YFTableViewCellDelegate代理方法
  *      func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath)
  *      func tableView(_ tableView: UITableView, didClickedEditButtonAt buttonIndex: Int, At IndexPath:IndexPath)
@@ -36,8 +38,8 @@ protocol YFTableViewCellDelegate:NSObjectProtocol {
     /// - Parameters:
     ///   - tableView: 当前点击的cell所在的TableView
     ///   - buttonIndex: 当前点击的按钮索引
-    ///   - IndexPath: 当前点击的cell所在的IndexPath
-    func tableView(_ tableView: UITableView, didClickedEditButtonAt buttonIndex: Int, At IndexPath:IndexPath)
+    ///   - indexPath: 当前点击的cell所在的IndexPath
+    func tableView(_ tableView: UITableView, didClickedEditButtonAt buttonIndex: Int, At indexPath:IndexPath)
 }
 
 let kYFCellEditButtonDelele = UIColor.red
@@ -57,12 +59,15 @@ class YFTableViewCell: UITableViewCell, UIScrollViewDelegate {
     
     var scrollView:UIScrollView?
     var editButtonArray:[UIButton]?
+    var confirmButton:UIButton?
+    var confirmButtonIndex:Int = 0
     weak var delegate:YFTableViewCellDelegate?
     
     private var     _cellState:YFTableViewCellState = .center
     private let     _rightButtonsView = UIView()
     private let     _backgroundView = UIView()
     private var     _lastOffset:CGFloat = 0.00
+    private var     _confirmIsFocus:Bool = false
     
     var rightButtonsViewWidth:Double {
         return Double((editButtonArray?.count ?? 0)*80)
@@ -84,7 +89,7 @@ class YFTableViewCell: UITableViewCell, UIScrollViewDelegate {
             return getSuperView(cls!, superClass:superClass)
         }
     }
-
+    
     override func draw(_ rect: CGRect) {
         
         if scrollView == nil {
@@ -93,7 +98,7 @@ class YFTableViewCell: UITableViewCell, UIScrollViewDelegate {
             scrollView?.isPagingEnabled = true
             scrollView?.showsHorizontalScrollIndicator = false
             scrollView?.showsVerticalScrollIndicator = false
-            scrollView?.bounces = true
+            scrollView?.bounces = false
             scrollView?.delegate = self
             scrollView?.tag = 0x80000
             scrollView?.backgroundColor = UIColor.clear
@@ -136,6 +141,14 @@ class YFTableViewCell: UITableViewCell, UIScrollViewDelegate {
             btn.addTarget(self, action: #selector(btnClicked(_:)), for: .touchUpInside)
         }
         
+        if let confirm = confirmButton {
+            confirm.frame = CGRect(x: 0.0, y: 0.0, width: rightButtonsViewWidth, height: Double(self.frame.height))
+            confirm.isHidden = true
+            _rightButtonsView.addSubview(confirm)
+            confirm.addTarget(self, action: #selector(btnConfirmClicked(_:)), for: .touchUpInside)
+        }
+        
+        
         scrollView?.contentSize = CGSize(width: Double(self.bounds.width) + self.rightButtonsViewWidth,
                                          height: 0.0)
         
@@ -150,7 +163,7 @@ class YFTableViewCell: UITableViewCell, UIScrollViewDelegate {
                 return
             }
         }
-         
+        
     }
     
     @objc func dealNotification(_ info: Notification) {
@@ -167,7 +180,7 @@ class YFTableViewCell: UITableViewCell, UIScrollViewDelegate {
         if scrollView?.contentOffset.x != 0 {
             UIView.animate(withDuration:0.3, animations: {
                 self.scrollView?.contentOffset = CGPoint.zero
-                })
+            })
             return
         }
         
@@ -179,23 +192,39 @@ class YFTableViewCell: UITableViewCell, UIScrollViewDelegate {
     }
     
     @objc func btnClicked(_ sender: UIButton) {
+        let index = sender.tag - 10000
+        if (index == confirmButtonIndex && confirmButton != nil) {
+            _confirmIsFocus = true
+            UIView.animate(withDuration:0.3, animations: {
+                self.scrollView?.contentOffset = CGPoint.zero
+            })
+        }else{
+            doBtnClicked(index: index)
+        }
+    }
+    
+    @objc func btnConfirmClicked(_ sender: UIButton) {
+        doBtnClicked(index: confirmButtonIndex)
+    }
+    
+    private func doBtnClicked(index:Int){
         UIView.animate(withDuration:0.3, animations: {
             self.scrollView?.contentOffset = CGPoint.zero;
         })
         
         if delegate != nil {
-            delegate?.tableView(tableView!, didClickedEditButtonAt: sender.tag - 10000, At: indexPath!)
+            delegate?.tableView(tableView!, didClickedEditButtonAt: index, At: indexPath!)
         }
     }
-
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
     }
-
+    
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
+        
         // Configure the view for the selected state
     }
     
@@ -223,7 +252,29 @@ class YFTableViewCell: UITableViewCell, UIScrollViewDelegate {
         
         _lastOffset = scrollView.contentOffset.x
     }
-
+    
+    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+        if (scrollView.contentOffset.x == 0) {
+            if let _confirmButton = confirmButton{
+                if (_confirmIsFocus) {
+                    _confirmIsFocus = false
+                    _confirmButton.isHidden = false
+                    UIView.animate(withDuration:0.6, animations: {
+                        scrollView.contentOffset = CGPoint(x: self.rightButtonsViewWidth, y: 0)
+                    })
+                }else if(_confirmButton.isHidden == false){
+                    _confirmButton.alpha = 1
+                    UIView.animate(withDuration: 0.3, animations: {
+                        _confirmButton.alpha = 0
+                    }, completion: { (_) in
+                        _confirmButton.alpha = 1
+                        _confirmButton.isHidden = true
+                    })
+                }
+            }
+        }
+    }
+    
     func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
         var rect = _rightButtonsView.frame
         if (_rightButtonsView.frame.origin.x >= self.bounds.width) {
