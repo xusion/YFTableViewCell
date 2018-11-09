@@ -78,18 +78,23 @@ class YFTableViewCell: UITableViewCell, UIScrollViewDelegate {
     }
     
     var indexPath:IndexPath? {
-        return self.tableView?.indexPath(for: self)
-    }
-    
-    func getSuperView(_ view:UIView, superClass: AnyClass) -> UIView {
-        let cls = view.superview
-        if (cls?.isKind(of: superClass))!{
-            return cls!;
-        }else{
-            return getSuperView(cls!, superClass:superClass)
+        if self.tableView != nil {
+            return self.tableView?.indexPath(for: self)
         }
+        return nil
     }
     
+    func getSuperView(_ view:UIView, superClass: AnyClass) -> UIView? {
+        if let cls = view.superview{
+            if(cls.isKind(of: superClass)){
+                return cls;
+            }else{
+                return getSuperView(cls, superClass:superClass)
+            }
+        }
+        return nil
+    }
+
     override func draw(_ rect: CGRect) {
         
         if scrollView == nil {
@@ -163,43 +168,51 @@ class YFTableViewCell: UITableViewCell, UIScrollViewDelegate {
                 return
             }
         }
-        
+         
     }
     
     @objc func dealNotification(_ info: Notification) {
         guard  info.object as?YFTableViewCell == self else {
-            UIView.animate(withDuration: 0.3, animations: {
-                self.scrollView?.contentOffset = CGPoint.zero
-            })
+            if self.scrollView != nil {
+                UIView.animate(withDuration: 0.3, animations: {
+                    self.scrollView?.contentOffset = CGPoint.zero
+                })
+            }
             return
         }
     }
     
     @objc func tapClicked(_ tap:UITapGestureRecognizer) {
         NotificationCenter.default.post(name: NSNotification.Name(rawValue: YFTableViewCellNSNotification), object: self)
-        if scrollView?.contentOffset.x != 0 {
-            UIView.animate(withDuration:0.3, animations: {
-                self.scrollView?.contentOffset = CGPoint.zero
-            })
-            return
+        if scrollView != nil {
+            if scrollView?.contentOffset.x != 0 {
+                UIView.animate(withDuration:0.3, animations: {
+                    self.scrollView?.contentOffset = CGPoint.zero
+                    })
+                return
+            }
         }
         
         if self.delegate != nil {
-            delegate?.tableView(tableView!, didSelectRowAt: indexPath!)
+            if(tableView != nil && indexPath != nil){
+                delegate?.tableView(tableView!, didSelectRowAt: indexPath!)
+            }
         }else{
             print("未设置代理！")
         }
     }
     
     @objc func btnClicked(_ sender: UIButton) {
-        let index = sender.tag - 10000
-        if (index == confirmButtonIndex && confirmButton != nil) {
-            _confirmIsFocus = true
-            UIView.animate(withDuration:0.3, animations: {
-                self.scrollView?.contentOffset = CGPoint.zero
-            })
-        }else{
-            doBtnClicked(index: index)
+        if (self.scrollView != nil){
+            let index = sender.tag - 10000
+            if (index == confirmButtonIndex && confirmButton != nil) {
+                _confirmIsFocus = true
+                UIView.animate(withDuration:0.3, animations: {
+                    self.scrollView?.contentOffset = CGPoint.zero
+                })
+            }else{
+                doBtnClicked(index: index)
+            }
         }
     }
     
@@ -208,23 +221,25 @@ class YFTableViewCell: UITableViewCell, UIScrollViewDelegate {
     }
     
     private func doBtnClicked(index:Int){
-        UIView.animate(withDuration:0.3, animations: {
-            self.scrollView?.contentOffset = CGPoint.zero;
-        })
+        if (self.scrollView != nil){
+            UIView.animate(withDuration:0.3, animations: {
+                self.scrollView?.contentOffset = CGPoint.zero;
+            })
+        }
         
-        if delegate != nil {
+        if delegate != nil && tableView != nil &&  indexPath != nil {
             delegate?.tableView(tableView!, didClickedEditButtonAt: index, At: indexPath!)
         }
     }
-    
+
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
     }
-    
+
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-        
+
         // Configure the view for the selected state
     }
     
@@ -274,7 +289,7 @@ class YFTableViewCell: UITableViewCell, UIScrollViewDelegate {
             }
         }
     }
-    
+
     func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
         var rect = _rightButtonsView.frame
         if (_rightButtonsView.frame.origin.x >= self.bounds.width) {
